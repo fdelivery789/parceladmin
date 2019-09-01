@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fad0f770-8cad-4345-b3dd-fb30ca8c409c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/css/packages.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/packages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/edit-user-profile-picture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/admins.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/check-session.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/check-session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/edit-user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/get-admin-id.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get-admin-id.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/users.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="212" />
+    <option name="y" value="113" />
+    <option name="width" value="972" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectId" id="1PlMJNZDit2R4JowdUPR3SFoZNc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fad0f770-8cad-4345-b3dd-fb30ca8c409c" name="Default Changelist" comment="" />
+      <created>1550436966703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550436966703</updated>
+      <workItem from="1550436968841" duration="914000" />
+      <workItem from="1550437969779" duration="711000" />
+      <workItem from="1550438719827" duration="2148000" />
+      <workItem from="1550441830945" duration="1842000" />
+      <workItem from="1550443725345" duration="1776000" />
+      <workItem from="1550445540830" duration="1734000" />
+      <workItem from="1550450209288" duration="1892000" />
+      <workItem from="1550452134712" duration="1828000" />
+      <workItem from="1550461556174" duration="1832000" />
+      <workItem from="1550463435625" duration="1904000" />
+      <workItem from="1550465710707" duration="960000" />
+      <workItem from="1550475947480" duration="1754000" />
+      <workItem from="1550477754544" duration="1651000" />
+      <workItem from="1550480962402" duration="1349000" />
+      <workItem from="1550482428256" duration="311000" />
+      <workItem from="1550482801741" duration="1800000" />
+      <workItem from="1550484646054" duration="1774000" />
+      <workItem from="1550486523698" duration="599000" />
+      <workItem from="1550492443260" duration="1757000" />
+      <workItem from="1550494238399" duration="1778000" />
+      <workItem from="1550499614255" duration="1978000" />
+      <workItem from="1550502419971" duration="120000" />
+      <workItem from="1550517221966" duration="1675000" />
+      <workItem from="1550554304242" duration="726000" />
+      <workItem from="1550565767753" duration="216000" />
+      <workItem from="1550569707281" duration="598000" />
+      <workItem from="1550573119294" duration="599000" />
+      <workItem from="1550586136516" duration="41000" />
+      <workItem from="1550662359398" duration="125000" />
+      <workItem from="1550662517614" duration="1635000" />
+      <workItem from="1550672328314" duration="1911000" />
+      <workItem from="1550676023790" duration="1774000" />
+      <workItem from="1550677845685" duration="1953000" />
+      <workItem from="1550679840204" duration="1783000" />
+      <workItem from="1550681666705" duration="1770000" />
+      <workItem from="1550683482258" duration="1769000" />
+      <workItem from="1550685292432" duration="2148000" />
+      <workItem from="1550688643720" duration="599000" />
+      <workItem from="1550694193756" duration="381000" />
+      <workItem from="1550727186353" duration="1036000" />
+      <workItem from="1550729797525" duration="115000" />
+      <workItem from="1551535888167" duration="453000" />
+      <workItem from="1551536492139" duration="163000" />
+      <workItem from="1551536787672" duration="34000" />
+      <workItem from="1551540912524" duration="957000" />
+      <workItem from="1551580035646" duration="598000" />
+      <workItem from="1551587164711" duration="24000" />
+      <workItem from="1551679949257" duration="1309000" />
+      <workItem from="1551762105343" duration="196000" />
+      <workItem from="1551842349543" duration="1682000" />
+      <workItem from="1551844686169" duration="249000" />
+      <workItem from="1551845520036" duration="59000" />
+      <workItem from="1551851779855" duration="1313000" />
+      <workItem from="1551855220703" duration="1140000" />
+      <workItem from="1551856579589" duration="785000" />
+      <workItem from="1551866575026" duration="150000" />
+      <workItem from="1551923484848" duration="1336000" />
+      <workItem from="1551946945493" duration="1674000" />
+      <workItem from="1551948739529" duration="1779000" />
+      <workItem from="1551950550510" duration="1788000" />
+      <workItem from="1551952422052" duration="767000" />
+      <workItem from="1551962705803" duration="18000" />
+      <workItem from="1560768134993" duration="17954000" />
+      <workItem from="1560802661551" duration="2943000" />
+      <workItem from="1560835179460" duration="2130000" />
+      <workItem from="1561215134763" duration="26971000" />
+      <workItem from="1561278891667" duration="601000" />
+      <workItem from="1561287151381" duration="1975000" />
+      <workItem from="1561293226996" duration="48000" />
+      <workItem from="1561312210880" duration="4060000" />
+      <workItem from="1561323424683" duration="10445000" />
+      <workItem from="1561751763122" duration="20000" />
+      <workItem from="1561751788093" duration="4000" />
+      <workItem from="1561751796708" duration="15764000" />
+      <workItem from="1561891129204" duration="683000" />
+      <workItem from="1561949134971" duration="53000" />
+      <workItem from="1561949192536" duration="2000" />
+      <workItem from="1561949197909" duration="2000" />
+      <workItem from="1561949203515" duration="3000" />
+      <workItem from="1561949210571" duration="8703000" />
+      <workItem from="1562290205716" duration="1260000" />
+      <workItem from="1562368900172" duration="7659000" />
+      <workItem from="1562752889107" duration="638000" />
+      <workItem from="1563939261301" duration="5122000" />
+      <workItem from="1566444164164" duration="1196000" />
+      <workItem from="1566455844606" duration="41000" />
+      <workItem from="1567178828854" duration="51000" />
+      <workItem from="1567222920995" duration="3144000" />
+      <workItem from="1567372184203" duration="2045000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

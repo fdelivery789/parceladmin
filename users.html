@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBIQHNnSDMf_BNX-hlQRH4A4mGm0o7iJEc",
+            authDomain: "food-delivery-e9a7e.firebaseapp.com",
+            databaseURL: "https://food-delivery-e9a7e.firebaseio.com",
+            projectId: "food-delivery-e9a7e",
+            storageBucket: "food-delivery-e9a7e.appspot.com",
+            messagingSenderId: "680216534990",
+            appId: "1:680216534990:web:a753244f5f9a1b8e"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="js/global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="js/users.js"></script>
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/users.css" rel="stylesheet">
+    <link href="img/icon.png" rel="icon">
+    <title>Pengguna</title>
+</head>
+<body>
+<div style="width: 100%; height: 100%; display: flex; flex-flow: row nowrap; position: fixed; left: 0; top: 0;">
+    <div style="width: 200px; height: 100%; background-color: #2e2f4d; display: flex; flex-flow: column nowrap; overflow-y: scroll;">
+        <div style="width: 100%; height: 100px; display: flex; justify-content: center; align-items: center;">
+            <img src="img/icon.png" width="60px" height="60px">
+        </div>
+        <div onclick="openAdmins()" class="menu-item" style="margin-left: 10px; margin-top: 5px;">
+            <img src="img/admin.png" width="20px" height="20px">
+            <div style="margin-left: 10px;">Admin</div>
+        </div>
+        <div onclick="openUsers()" class="menu-item-active" style="margin-left: 10px; margin-top: 5px;">
+            <img src="img/user-2.png" width="20px" height="20px">
+            <div style="margin-left: 10px;">Pengguna</div>
+        </div>
+        <div onclick="openPackages()" class="menu-item" style="margin-left: 10px; margin-top: 5px;">
+            <img src="img/box.png" width="20px" height="20px">
+            <div style="margin-left: 10px;">Paket</div>
+        </div>
+        <div onclick="logout()" class="menu-item" style="margin-left: 10px; margin-top: 5px;">
+            <img src="img/logout.png" width="20px" height="20px">
+            <div style="margin-left: 10px;">Keluar</div>
+        </div>
+    </div>
+    <div style="width: calc(100% - 200px); display: flex; flex-flow: column nowrap; padding-top: 30px; overflow-y: scroll;">
+        <div style="display: flex; flex-flow: row nowrap; margin-left: 20px;">
+            <img src="img/settings-2.png" width="50px" height="50px">
+            <div style="margin-left: 10px; font-size: 25px; color: #717179;">Daftar Pengguna</div>
+        </div>
+        <div style="display: none; justify-content: flex-end; width: 1000px; margin-left: 20px;">
+            <button onclick="addUser()" class="button6">Tambah Pengguna</button>
+        </div>
+        <table class="flat-table" style="width: 1000px; margin-left: 20px; margin-top: 30px;">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Username</th>
+                <th>Kata Sandi</th>
+                <th>Kode Admin</th>
+                <th>Posisi</th>
+                <th>Ubah</th>
+                <th>Hapus</th>
+            </tr>
+            </thead>
+            <tbody id="users">
+            </tbody>
+        </table>
+        <div>&nbsp;</div>
+    </div>
+</div>
+<div id="edit-user-container"
+     style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, .5); overflow-y: scroll;">
+    <div style="width: 500px; height: calc(100% - 100px); margin-top: 50px; margin-bottom: 50px; border-radius: 5px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .7); background-color: white; display: flex; flex-flow: column nowrap; overflow-y: scroll;">
+        <div style="width: 100%; padding-top: 10px; padding-bottom: 10px; color: #333333; font-family: PalanquinBold;">
+            <div id="edit-user-title" style="margin-left: 20px; margin-right: 20px;">Edit Pengguna</div>
+        </div>
+        <div style="width: 100%; height: 1px; background-color: rgba(0, 0, 0, .1);"></div>
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Nama:</div>
+        <input class="input2" id="edit-user-name" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">No. HP:</div>
+        <input class="input2" id="edit-user-phone" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Username:</div>
+        <input class="input2" id="edit-user-username" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Kata sandi:
+        </div>
+        <input class="input2" id="edit-user-password" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Foto profil:</div>
+        <div style="width: 100%; display: flex; align-items: center; flex-flow: column nowrap;">
+            <img id="edit-user-profile-picture" width="100px" height="100px" src="img/profile-picture.jpg">
+            <input id="edit-user-select-profile-picture" type="file" style="width: 0; height: 0; visibility: hidden;">
+            <button onclick="selectProfilePicture()" class="button4" style="margin-top: 10px;">Ubah Foto Profil</button>
+        </div>
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Posisi:
+        </div>
+        <div style="width: 100%; height: 40px; display: flex; justify-content: center; align-items: center;">
+            <input id="user" type="radio" name="user-position" value="customer">Pengguna
+            <input id="admin" type="radio" name="user-position" value="driver" style="margin-left: 10px;">Admin
+        </div>
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">NIK:</div>
+        <input class="input2" id="edit-user-nik" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Alamat:</div>
+        <input class="input2" id="edit-user-address" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Bidang studi:</div>
+        <input class="input2" id="edit-user-study" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <div style="width: calc(100% - 15px); display: flex; flex-flow: row nowrap; justify-content: flex-end; margin-top: 10px; margin-right: 15px;">
+            <button onclick="closeEditUserDialog()" class="button5">Batal</button>
+            <button id="edit-user-ok" class="button4" style="margin-left: 5px;">Tambah</button>
+        </div>
+        <div>&nbsp;</div>
+        </input>
+    </div>
+</div>
+<div id="chat-container" style="position: fixed; bottom: 10px; right: 10px; display: none; flex-flow: column nowrap; width: 300px; height: 400px; background-color: white; border-radius: 10px; box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .6);">
+    <div style="position: relative; width: 100%; height: 35px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #3498db; display: flex; justify-content: center; align-items: center;">
+        <div style="color: white; font-size: 15px; font-weight: bold;">Percakapan</div>
+        <div onclick="closeSendMessageDialog()" style="cursor: pointer; position: absolute; top: 0; right: 0; width: 30px; height: 100%; display: flex; justify-content: center; align-items: center;">
+            <img src="img/close-2.png" width="15px" height="15px">
+        </div>
+    </div>
+    <div style="width: 100%; display: flex; flex-flow: row nowrap;">
+        <img src="img/profile-picture.jpg" width="50px" height="50px" style="border-radius: 50%; margin-left: 10px; margin-top: 10px;">
+        <div style="display: flex; flex-flow: column nowrap; margin-left: 10px; margin-top: 10px;">
+            <div id="user-name" style="font-weight: bold; color: #000000; font-size: 15px;">User Name</div>
+            <div id="user-email" style="color: #000000; font-size: 13px; margin-top: -10px;">Email</div>
+        </div>
+    </div>
+    <div id="messages" style="width: 100%; height: calc(100% - 35px - 80px - 50px); margin-top: 10px; overflow-y: scroll;">
+    </div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; display: flex; flex-flow: column nowrap;">
+        <div style="width: 100%; height: 2px; background-color: #dddddd;"></div>
+        <div style="width: 100%; height: calc(100% - 2px); background-color: white;">
+            <input id="message" style="width: calc(100% - 24px); padding-left: 10px; padding-right: 10px; height: 100%; color: #000000; background-color: #ffffff; border: 0;" placeholder="Masukkan pesan di sini...">
+        </div>
+    </div>
+</div>
+<div id="confirm-container"
+     style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, .8);">
+    <div style="background-color: white; width: 500px; border-radius: 8px; display: flex; flex-flow: column nowrap;">
+        <div style="width: 100%; display: flex; flex-flow: row nowrap; height: 40px; align-items: center; justify-content: space-between;">
+            <div id="confirm-title"
+                 style="color: #444444; font-size: 23px; margin-left: 20px; margin-right: 20px; white-space: nowrap;"></div>
+            <div id="close-confirm"
+                 style="cursor: pointer; width: 30px; height: 100%; display: flex; justify-content: center; align-items: center;">
+                <img src="img/close.png" width="15px" height="15px">
+            </div>
+        </div>
+        <div style="width: 100%; height: 1px; background-color: rgba(0, 0, 0, 0);"></div>
+        <div id="confirm-msg"
+             style="background-color: #eeeeee; color: black; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;">
+        </div>
+        <div style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: #eeeeee; width: 100%; display: flex; flex-flow: row nowrap; justify-content: flex-end;">
+            <button id="confirm-cancel" class="button3"
+                    style="margin-top: 10px; margin-bottom: 10px; margin-right: 10px;">Batal
+            </button>
+            <button id="confirm-ok" class="button3" style="margin-top: 10px; margin-bottom: 10px; margin-right: 10px;">
+                OK
+            </button>
+        </div>
+    </div>
+</div>
+<div id="loading-blocker"
+     style="background-color: rgba(0, 0, 0, .3); display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%;"></div>
+<div id="loading-container"
+     style="position: fixed; left: 0; bottom: 0; margin-bottom: -45px; width: 100%; height: 45px; color: white; font-family: PalanquinBold; display: flex; flex-flow: row nowrap; align-items: center; background-color: #3498db; transition: margin-bottom .5s;">
+    <div id="loading-msg" style="margin-left: 20px;"></div>
+</div>
+<div id="toast-container"
+     style="position: fixed; left: 0; bottom: 20px; width: 100%; display: none; justify-content: center;">
+    <div id="toast-msg"
+         style="border-radius: 5px; background-color: rgba(0, 0, 0, .8); color: white; height: 30px; padding-left: 20px; padding-right: 20px;"></div>
+</div>
+</body>
+</html>
