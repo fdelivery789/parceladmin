@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad0f770-8cad-4345-b3dd-fb30ca8c409c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/css/packages.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/packages.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/edit-user-profile-picture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/admins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/check-session.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/check-session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/edit-user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get-admin-id.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get-admin-id.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurants.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/users.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +151,7 @@
       <workItem from="1566455844606" duration="41000" />
       <workItem from="1567178828854" duration="51000" />
       <workItem from="1567222920995" duration="3144000" />
-      <workItem from="1567372184203" duration="2045000" />
+      <workItem from="1567372184203" duration="2514000" />
     </task>
     <servers />
   </component>
