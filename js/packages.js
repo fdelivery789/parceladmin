@@ -95,6 +95,7 @@ function setPackageClickListener() {
         $("#sender-name").val(packageJSON["sender_name"]);
         $("#receiver-name").val(packageJSON["receiver_name"]);
         $("#courier-name").val(packageJSON["courier_name"]);
+        $("#type").val(packageJSON["type"]);
         $("#total-items").val(packageJSON["total_items"]);
         $("#date-received").val(packageJSON["date_received"]+" "+packageJSON["time_received"]);
         var status = packageJSON["status"];
@@ -166,6 +167,7 @@ function addPackage() {
     $("#sender-name").val("");
     $("#receiver-name").val("");
     $("#courier-name").val("");
+    $("#type").val("");
     $("#total-items").val("");
     $("#date-received").val("");
     $("#time-received").val("");
@@ -176,6 +178,7 @@ function addPackage() {
         var senderName = $("#sender-name").val().trim();
         var receiverName = $("#receiver-name").val().trim();
         var courierName = $("#courier-name").val().trim();
+        var type = $("#type").val().trim();
         var totalItems = $("#total-items").val().trim();
         var dateReceived = $("#date-received").val().trim();
         var timeReceived = $("#time-received").val().trim();
@@ -185,6 +188,7 @@ function addPackage() {
         fd.append("sender_name", senderName);
         fd.append("receiver_name", receiverName);
         fd.append("shipping_service", courierName);
+        fd.append("type", type);
         fd.append("total_items", ""+totalItems);
         fd.append("date_received", dateReceived);
         fd.append("time_received", timeReceived);
