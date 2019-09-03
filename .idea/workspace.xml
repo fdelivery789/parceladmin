@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fad0f770-8cad-4345-b3dd-fb30ca8c409c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/admins.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/admins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/channels.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/channels.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/packages.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/packages.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/packages.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/packages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/restaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/restaurants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -162,6 +156,7 @@
       <workItem from="1567372184203" duration="2603000" />
       <workItem from="1567400439539" duration="2632000" />
       <workItem from="1567492238328" duration="1639000" />
+      <workItem from="1567496473234" duration="635000" />
     </task>
     <servers />
   </component>

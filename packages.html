@@ -58,16 +58,16 @@
             <button onclick="addPackage()" class="button6">Tambah Paket</button>
         </div>
         <div style="width: calc(100% - 40px); height: 40px; border-radius: 5px; margin-top: 20px; margin-left: 20px; margin-right: 20px; display: flex; flex-flow: row nowrap;">
-            <div id="tab1" onclick="selectTab(1)" style="cursor: pointer; width: 50%; height: 100%; border-top-left-radius: 5px; border-bottom-left-radius: 5px; background-color: #2e2f4d; border: 1px solid #2e2f4d; color: white; display: flex; justify-content: center; align-items: center;">
+            <div id="tab1" onclick="selectTab(1)" style="cursor: pointer; width: 50%; height: 100%; border-radius: 5px; background-color: #2e2f4d; color: white; display: flex; justify-content: center; align-items: center;">
                 Belum Diambil
             </div>
-            <div id="tab2" onclick="selectTab(2)" style="cursor: pointer; width: 50%; height: 100%; border-top-right-radius: 5px; border-bottom-right-radius: 5px; background-color: #ffffff; border: 1px solid #2e2f4d; color: black; display: flex; justify-content: center; align-items: center;">
+            <div id="tab2" onclick="selectTab(2)" style="cursor: pointer; width: 50%; height: 100%; border-radius: 5px; background-color: #ffffff; color: black; display: flex; justify-content: center; align-items: center;">
                 Sudah Diambil
             </div>
         </div>
-        <div style="position: relative; width: 100%;">
+        <div style="position: relative; width: 100%; margin-top: 0;">
             <div id="received-packages-container" style="position: absolute; left: 0; top: 0; width: 100%;">
-                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px; margin-top: 5px;">
+                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px;">
                     <thead>
                     <tr>
                         <th>No.</th>
@@ -85,8 +85,8 @@
                 </table>
                 <div>&nbsp;</div>
             </div>
-            <div id="sent-packages-container" style="visibility: hidden; position: absolute; left: 0; top: 0; width: 100%;">
-                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px; margin-top: 5px;">
+            <div id="sent-packages-container" style="display: none; position: absolute; left: 0; top: 0; width: 100%;">
+                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px;">
                     <thead>
                     <tr>
                         <th>No.</th>

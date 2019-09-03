@@ -210,23 +210,23 @@ function closeEditPackageDialog() {
 function selectTab(tab) {
     if (tab == 1) {
         currentTab = 1;
-        $("#received-packages-container").css("visibility", "visible");
-        $("#sent-packages-container").css("visibility", "hidden");
+        $("#received-packages-container").fadeIn(300);
+        $("#sent-packages-container").fadeOut(300);
         $("#tab1").css({
             backgroundColor: "#2e2f4d",
             color: "white"
         });
         $("#tab2").css({
             backgroundColor: "white",
-            color: "#2e2f4d"
+            color: "black"
         });
     } else if (tab == 2) {
         currentTab = 2;
-        $("#received-packages-container").css("visibility", "hidden");
-        $("#sent-packages-container").css("visibility", "visible");
+        $("#received-packages-container").fadeOut(300);
+        $("#sent-packages-container").fadeIn(300);
         $("#tab1").css({
             backgroundColor: "white",
-            color: "#2e2f4d"
+            color: "black"
         });
         $("#tab2").css({
             backgroundColor: "#2e2f4d",
