@@ -30,7 +30,7 @@ function getPackages() {
                     "<td>" + packageJSON["date_received"] + "</td>" +
                     "<td>" + packageJSON["type"] + "</td>" +
                     "<td><a class='view-package custom-link'>Lihat</a></td>" +
-                    "<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                    //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
                     "</tr>"
                 );
             }
@@ -52,7 +52,7 @@ function getPackages() {
                             "<td>" + packageJSON["date_received"] + "</td>" +
                             "<td>" + packageJSON["type"] + "</td>" +
                             "<td><a class='view-package custom-link'>Lihat</a></td>" +
-                            "<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                            //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
                             "</tr>"
                         );
                     }
