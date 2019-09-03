@@ -8,6 +8,7 @@ var currentLongitude;
 var map;
 
 $(document).ready(function () {
+    checkSession();
     getOrders();
     map = new ol.Map({
         target: 'map',

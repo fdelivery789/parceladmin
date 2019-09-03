@@ -17,6 +17,7 @@ var profilePicture = null;
 var profilePictureChanged = false; //boolean
 
 $(document).ready(function () {
+    checkSession();
     $.ajax({
         type: 'GET',
         url: PHP_PATH + 'get-admin-id.php',

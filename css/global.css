@@ -196,6 +196,22 @@ button::-moz-focus-inner {
     color: #5a5db4;
 }
 
+.custom-link {
+    text-decoration: none!important;
+    color: #6d7ae0;
+    font-size: 15px;
+    font-family: PalanquinRegular;
+    cursor: pointer;
+}
+
+.custom-link:active {
+    color: #5a5db4;
+}
+
+.custom-link:focus {
+    color: #5a5db4;
+}
+
 .link2 {
     text-decoration: none!important;
     color: #f1c40f;

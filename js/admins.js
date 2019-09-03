@@ -4,6 +4,7 @@ var currentProfilePicture = "";
 var admins = [];
 
 $(document).ready(function() {
+    checkSession();
     getAdmins();
 });
 

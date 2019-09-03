@@ -19,8 +19,10 @@
     <script src="js/global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
     <script src="js/packages.js"></script>
-    <link href="css/global.css" rel="stylesheet">
     <link href="css/packages.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/global.css" rel="stylesheet">
     <link href="img/icon.png" rel="icon">
     <title>Paket</title>
 </head>
@@ -52,26 +54,57 @@
             <img src="img/settings-2.png" width="50px" height="50px">
             <div style="margin-left: 10px; font-size: 25px; color: #717179;">Daftar Paket</div>
         </div>
-        <div style="display: none; justify-content: flex-end; width: 1000px; margin-left: 20px;">
-            <button onclick="addUser()" class="button6">Tambah Pengguna</button>
+        <div style="display: flex; justify-content: flex-end; width: 1000px; margin-left: 20px;">
+            <button onclick="addPackage()" class="button6">Tambah Paket</button>
         </div>
-        <table class="flat-table" style="width: 1000px; margin-left: 20px; margin-top: 30px;">
-            <thead>
-            <tr>
-                <th>No.</th>
-                <th>Pengirim</th>
-                <th>Penerima</th>
-                <th>Kurir</th>
-                <th>Tgl Diterima</th>
-                <th>Status</th>
-                <th>Ubah</th>
-                <th>Hapus</th>
-            </tr>
-            </thead>
-            <tbody id="packages">
-            </tbody>
-        </table>
-        <div>&nbsp;</div>
+        <div style="width: calc(100% - 40px); height: 40px; border-radius: 5px; margin-top: 20px; margin-left: 20px; margin-right: 20px; display: flex; flex-flow: row nowrap;">
+            <div id="tab1" onclick="selectTab(1)" style="cursor: pointer; width: 50%; height: 100%; border-top-left-radius: 5px; border-bottom-left-radius: 5px; background-color: #2e2f4d; border: 1px solid #2e2f4d; color: white; display: flex; justify-content: center; align-items: center;">
+                Belum Diambil
+            </div>
+            <div id="tab2" onclick="selectTab(2)" style="cursor: pointer; width: 50%; height: 100%; border-top-right-radius: 5px; border-bottom-right-radius: 5px; background-color: #ffffff; border: 1px solid #2e2f4d; color: black; display: flex; justify-content: center; align-items: center;">
+                Sudah Diambil
+            </div>
+        </div>
+        <div style="position: relative; width: 100%;">
+            <div id="received-packages-container" style="position: absolute; left: 0; top: 0; width: 100%;">
+                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px; margin-top: 5px;">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Pengirim</th>
+                        <th>Penerima</th>
+                        <th>Kurir</th>
+                        <th>Tgl Diterima</th>
+                        <th>Tipe</th>
+                        <th>Ubah</th>
+                        <th>Hapus</th>
+                    </tr>
+                    </thead>
+                    <tbody id="received-packages">
+                    </tbody>
+                </table>
+                <div>&nbsp;</div>
+            </div>
+            <div id="sent-packages-container" style="visibility: hidden; position: absolute; left: 0; top: 0; width: 100%;">
+                <table class="flat-table" style="width: calc(100% - 40px); margin-left: 20px; margin-right: 20px; margin-top: 5px;">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Pengirim</th>
+                        <th>Penerima</th>
+                        <th>Kurir</th>
+                        <th>Tgl Diterima</th>
+                        <th>Tipe</th>
+                        <th>Ubah</th>
+                        <th>Hapus</th>
+                    </tr>
+                    </thead>
+                    <tbody id="sent-packages">
+                    </tbody>
+                </table>
+                <div>&nbsp;</div>
+            </div>
+        </div>
     </div>
 </div>
 <div id="container"
@@ -81,6 +114,11 @@
             <div id="title" style="margin-left: 20px; margin-right: 20px;">Edit Paket</div>
         </div>
         <div style="width: 100%; height: 1px; background-color: rgba(0, 0, 0, .1);"></div>
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Admin:</div>
+        <div class="form-group" style="margin-left: 20px; margin-right: 20px; width: calc(100% - 40px);">
+            <select class="form-control" id="admin-name">
+            </select>
+        </div>
         <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Nama pengirim:</div>
         <input class="input2" id="sender-name" type="text" style="margin-left: 20px; margin-right: 20px;">
         <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Nama penerima:</div>
@@ -90,12 +128,13 @@
         <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Total item:</div>
         <input class="input2" id="total-items" type="text" style="margin-left: 20px; margin-right: 20px;">
         <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Tanggal diterima:</div>
-        <input class="input2" id="date-received" type="text" style="margin-left: 20px; margin-right: 20px;">
-        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Tanggal dikirim:</div>
-        <input class="input2" id="date-sent" type="text" style="margin-left: 20px; margin-right: 20px;">
+        <input class="input2" id="date-received" type="date" style="margin-left: 20px; margin-right: 20px;">
+        <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Waktu diterima:</div>
+        <input class="input2" id="time-received" type="time" name="time" style="margin-left: 20px; margin-right: 20px;">
         <div style="color: #333333; font-family: PalanquinBold; margin-left: 20px; margin-right: 20px;">Status:</div>
         <input class="input2" id="status" type="text" style="margin-left: 20px; margin-right: 20px;">
         <div style="width: calc(100% - 15px); display: flex; flex-flow: row nowrap; justify-content: flex-end; margin-top: 10px; margin-right: 15px;">
+            <button onclick="closeEditPackageDialog()" class="button5">Batal</button>
             <button id="ok" class="button4" style="margin-left: 5px;">OK</button>
         </div>
         <div>&nbsp;</div>

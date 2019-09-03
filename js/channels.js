@@ -3,6 +3,7 @@ var channels = [];
 var currentChannelIndex = 0;
 
 $(document).ready(function() {
+    checkSession();
     getChannels();
 });
 

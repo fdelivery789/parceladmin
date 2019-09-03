@@ -1,12 +1,15 @@
-//const HOST = "localhost/parceladmin";
-const HOST = "fdelivery.xyz/parceladmin";
+const HOST = "localhost/parceladmin";
+//const HOST = "fdelivery.xyz/parceladmin";
 const PHP_PATH = "http://"+HOST+"/php/";
 const API_KEY = "AIzaSyCNA8fwTJhMu8ju9pdg08M5zBmninVPm5k";
 const HERE_APP_ID = "BqM8uW7Z8qDUrv8ZxlSX";
 const HERE_APP_CODE = "Oey0WMUEYBpTe5qq3mrq5w";
 
 $(document).ready(function() {
-    /*$.ajax({
+});
+
+function checkSession() {
+    $.ajax({
         type: 'GET',
         url: PHP_PATH+'check-session.php',
         dataType: 'text',
@@ -17,8 +20,8 @@ $(document).ready(function() {
                 window.location.href = "login.html";
             }
         }
-    });*/
-});
+    });
+}
 
 function show(msg) {
     $("#toast-msg").html(msg);

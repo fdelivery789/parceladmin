@@ -16,6 +16,7 @@ var selectedLongitude = 0;
 var sources = [];
 
 $(document).ready(function () {
+    checkSession();
     map = new ol.Map({
         target: 'edit-restaurant-map',
         layers: [
