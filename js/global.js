@@ -1,5 +1,5 @@
-//const HOST = "localhost/parceladmin";
-const HOST = "fdelivery.xyz/parceladmin";
+const HOST = "localhost/parceladmin";
+//const HOST = "fdelivery.xyz/parceladmin";
 const PHP_PATH = "http://"+HOST+"/php/";
 const API_KEY = "AIzaSyCNA8fwTJhMu8ju9pdg08M5zBmninVPm5k";
 const HERE_APP_ID = "BqM8uW7Z8qDUrv8ZxlSX";
@@ -146,4 +146,154 @@ function getBase64Image(url, user, doc, callback) {
     xhr.open('GET', url);
     xhr.responseType = 'blob';
     xhr.send();
+}
+
+function writeHistory(doc, user) {
+    if (orderLooper >= ordersJSON.length) {
+        doc.save("riwayat_pemesanan.pdf");
+        return;
+    }
+    var orderJSON = ordersJSON[orderLooper];
+    orderLooper++;
+    console.log("User ID: "+user["id"]);
+    firebase.database().ref("users/"+orderJSON["buyer_id"]+"/name").once("value").then(function(snapshot) {
+        var buyerName = snapshot.val();
+        doc.setFontSize(18);
+        doc.text(32, nextY, "=============== ORDER "+orderJSON["id"]+" ===============");
+        nextY += 8;
+        if (nextY > 247) {
+            nextY -= 237;
+            doc.addPage();
+        }
+        doc.setFontType("bold");
+        doc.setFontSize(14);
+        doc.text(32, nextY, "Nama pembeli:");
+        nextY += 7;
+        if (nextY > 247) {
+            nextY -= 237;
+            doc.addPage();
+        }
+        doc.setFontType("normal");
+        doc.text(32, nextY, buyerName);
+        nextY += 7;
+        if (nextY > 247) {
+            nextY -= 237;
+            doc.addPage();
+        }
+        firebase.database().ref("users/"+orderJSON["seller_id"]+"/name").once("value").then(function(snapshot) {
+            var sellerName = snapshot.val();
+            doc.setFontType("bold");
+            doc.text(32, nextY, "Nama penjual:");
+            nextY += 7;
+            if (nextY > 247) {
+                nextY -= 237;
+                doc.addPage();
+            }
+            doc.setFontType("normal");
+            doc.text(32, nextY, sellerName);
+            nextY += 7;
+            if (nextY > 247) {
+                nextY -= 237;
+                doc.addPage();
+            }
+            firebase.database().ref("users/"+orderJSON["driver_id"]+"/name").once("value").then(function(snapshot) {
+                var driverName = snapshot.val();
+                doc.setFontType("bold");
+                doc.text(32, nextY, "Nama pengirim:");
+                nextY += 7;
+                if (nextY > 247) {
+                    nextY -= 237;
+                    doc.addPage();
+                }
+                doc.setFontType("normal");
+                doc.text(32, nextY, driverName);
+                nextY += 7;
+                if (nextY > 247) {
+                    nextY -= 237;
+                    doc.addPage();
+                }
+                doc.setFontType("bold");
+                doc.text(32, nextY, "Biaya:");
+                nextY += 7;
+                if (nextY > 247) {
+                    nextY -= 237;
+                    doc.addPage();
+                }
+                doc.setFontType("normal");
+                doc.text(32, nextY, "Rp"+""+orderJSON["fee"]+",-");
+                nextY += 7;
+                if (nextY > 247) {
+                    nextY -= 237;
+                    doc.addPage();
+                }
+                firebase.database().ref("restaurants/"+orderJSON["restaurant_id"]+"/name").once("value").then(function(snapshot) {
+                    var restaurantName = snapshot.val();
+                    doc.setFontType("bold");
+                    doc.text(32, nextY, "Nama restoran:");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("normal");
+                    doc.text(32, nextY, restaurantName);
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("bold");
+                    doc.text(32, nextY, "Total item:");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("normal");
+                    doc.text(32, nextY, orderJSON["total_items"]+" item");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("bold");
+                    doc.text(32, nextY, "Total harga:");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("normal");
+                    doc.text(32, nextY, "Rp"+""+orderJSON["total_price"]+",-");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    doc.setFontType("bold");
+                    doc.text(32, nextY, "Daftar makanan:");
+                    nextY += 7;
+                    if (nextY > 247) {
+                        nextY -= 237;
+                        doc.addPage();
+                    }
+                    var fd2 = new FormData();
+                    fd2.append("order_id", ""+orderJSON["id"]);
+                    $.ajax({
+                        type: 'POST',
+                        url: PHP_PATH+'get-order-items.php',
+                        data: fd2,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: function(response) {
+                            foodsJSON = JSON.parse(response);
+                            foodLooper = 0;
+                            drawFood(doc, user);
+                        }
+                    });
+                });
+            });
+        });
+    });
 }

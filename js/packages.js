@@ -7,6 +7,8 @@ var admins = [];
 var currentTab = 1;
 var rStart = 0; //Received start
 var sStart = 0; //Sent start
+var nextY = 40;
+var looper = 0;
 
 $(document).ready(function() {
     checkSession();
@@ -330,4 +332,371 @@ function sNext() {
 function sPrev() {
     sStart -= PAGINATION_STEP;
     getPackages();
+}
+
+function rDownload() {
+    var doc = new jsPDF();
+    doc.setFontSize(14);
+    doc.text("Berikut ini riwayat paket yang belum dikirim", 32, 25);
+    nextY = 40;
+    looper = 0;
+    writeHistory("daftar_diterima.pdf", receivedPackages, doc);
+}
+
+function sDownload() {
+    var doc = new jsPDF();
+    doc.setFontSize(14);
+    doc.text("Berikut ini riwayat paket yang sudah dikirim", 32, 25);
+    nextY = 40;
+    looper = 0;
+    writeHistory("daftar_dikirim.pdf", sentPackages, doc);
+}
+
+function writeHistory(name, packagesJSON, doc) {
+    if (looper >= packagesJSON.length) {
+        doc.save(name);
+        return;
+    }
+    var packageJSON = packagesJSON[looper];
+    looper++;
+    doc.setFontSize(18);
+    doc.text(32, nextY, "=============== PAKET "+packageJSON["id"]+" ===============");
+    nextY += 8;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Nama pengirim
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Nama pengirim:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["sender_name"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Nama penerima
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Nama penerima:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["receiver_name"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Nama satpam penerima
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Nama admin penerima:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["admin_receiver_name"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Nama kurir
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Nama kurir:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["courier_name"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Total item
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Total item:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["total_items"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Tanggal diterima
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Tanggal diterima:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, packageJSON["date_received"]+" "+packageJSON["time_received"]);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    // Tanggal dikirim
+    if (packageJSON["date_sent"] != null && packageJSON["date_sent"] != "null") {
+        doc.setFontType("bold");
+        doc.setFontSize(14);
+        doc.text(32, nextY, "Tanggal dikirim:");
+        nextY += 7;
+        if (nextY > 247) {
+            nextY -= 237;
+            doc.addPage();
+        }
+        doc.setFontType("normal");
+        doc.text(32, nextY, packageJSON["date_sent"] + " " + packageJSON["time_sent"]);
+        nextY += 7;
+        if (nextY > 247) {
+            nextY -= 237;
+            doc.addPage();
+        }
+    }
+
+    var status = "";
+    if (packageJSON["status"] == "received") {
+        status = "Diterima";
+    } else if (packageJSON["status"] == "sent") {
+        status = "Dikirim";
+    }
+    doc.setFontType("bold");
+    doc.setFontSize(14);
+    doc.text(32, nextY, "Nama pengirim:");
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+    doc.setFontType("normal");
+    doc.text(32, nextY, status);
+    nextY += 7;
+    if (nextY > 247) {
+        nextY -= 237;
+        doc.addPage();
+    }
+
+    writeHistory(name, packagesJSON, doc);
+}
+
+function rFilter() {
+    $("#date-picker-container").css("display", "flex").hide().fadeIn(300);
+    $("#filter-ok").unbind().on("click", function() {
+        $("#date-picker-container").fadeOut(300);
+        receivedPackages = [];
+        $("#received-packages").find("*").remove();
+        showProgress("Memuat daftar paket");
+        var date = $("#select-date").val();
+        let fd = new FormData();
+        fd.append("date", date);
+        fd.append("start", rStart);
+        fd.append("total", PAGINATION_STEP);
+        $.ajax({
+            type: 'POST',
+            url: PHP_PATH+'get-received-packages-by-date.php',
+            data: fd,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(response) {
+                receivedPackages = JSON.parse(response);
+                for (var i=0; i<receivedPackages.length; i++) {
+                    var packageJSON = receivedPackages[i];
+                    var status = "";
+                    if (packageJSON["status"] == "received") {
+                        status = "Diterima";
+                    } else if (packageJSON["status"] == "sent") {
+                        status = "Dikirim";
+                    }
+                    $("#received-packages").append("" +
+                        "<tr>" +
+                        "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (rStart+i+1) + "</div></td>" +
+                        "<td>" + packageJSON["id"] + "</td>" +
+                        "<td>" + packageJSON["sender_name"] + "</td>" +
+                        "<td>" + packageJSON["receiver_name"] + "</td>" +
+                        "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
+                        "<td>" + packageJSON["courier_name"] + "</td>" +
+                        "<td>" + packageJSON["date_received"] + "</td>" +
+                        "<td>" + packageJSON["type"] + "</td>" +
+                        "<td>" + status + "</td>" +
+                        "<td><a class='view-package custom-link'>Lihat</a></td>" +
+                        //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                        "</tr>"
+                    );
+                }
+                sentPackages = [];
+                $("#sent-packages").find("*").remove();
+                let fd = new FormData();
+                fd.append("start", sStart);
+                fd.append("total", PAGINATION_STEP);
+                $.ajax({
+                    type: 'POST',
+                    url: PHP_PATH+'get-sent-packages.php',
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(response) {
+                        sentPackages = JSON.parse(response);
+                        for (var i=0; i<sentPackages.length; i++) {
+                            var packageJSON = sentPackages[i];
+                            var status = "";
+                            if (packageJSON["status"] == "received") {
+                                status = "Diterima";
+                            } else if (packageJSON["status"] == "sent") {
+                                status = "Dikirim";
+                            }
+                            $("#sent-packages").append("" +
+                                "<tr>" +
+                                "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (sStart+i+1) + "</div></td>" +
+                                "<td>" + packageJSON["id"] + "</td>" +
+                                "<td>" + packageJSON["sender_name"] + "</td>" +
+                                "<td>" + packageJSON["receiver_name"] + "</td>" +
+                                "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
+                                "<td>" + packageJSON["courier_name"] + "</td>" +
+                                "<td>" + packageJSON["date_received"] + "</td>" +
+                                "<td>" + packageJSON["type"] + "</td>" +
+                                "<td>" + status + "</td>" +
+                                "<td><a class='view-package custom-link'>Lihat</a></td>" +
+                                //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                                "</tr>"
+                            );
+                        }
+                        setPackageClickListener();
+                        hideProgress();
+                    }
+                });
+            }
+        });
+    });
+}
+
+function rFilter() {
+    $("#date-picker-container").css("display", "flex").hide().fadeIn(300);
+    $("#filter-ok").unbind().on("click", function() {
+        $("#date-picker-container").fadeOut(300);
+        receivedPackages = [];
+        $("#received-packages").find("*").remove();
+        showProgress("Memuat daftar paket");
+        var date = $("#select-date").val();
+        let fd = new FormData();
+        fd.append("date", date);
+        fd.append("start", rStart);
+        fd.append("total", PAGINATION_STEP);
+        $.ajax({
+            type: 'POST',
+            url: PHP_PATH+'get-received-packages-by-date.php',
+            data: fd,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(response) {
+                receivedPackages = JSON.parse(response);
+                for (var i=0; i<receivedPackages.length; i++) {
+                    var packageJSON = receivedPackages[i];
+                    var status = "";
+                    if (packageJSON["status"] == "received") {
+                        status = "Diterima";
+                    } else if (packageJSON["status"] == "sent") {
+                        status = "Dikirim";
+                    }
+                    $("#received-packages").append("" +
+                        "<tr>" +
+                        "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (rStart+i+1) + "</div></td>" +
+                        "<td>" + packageJSON["id"] + "</td>" +
+                        "<td>" + packageJSON["sender_name"] + "</td>" +
+                        "<td>" + packageJSON["receiver_name"] + "</td>" +
+                        "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
+                        "<td>" + packageJSON["courier_name"] + "</td>" +
+                        "<td>" + packageJSON["date_received"] + "</td>" +
+                        "<td>" + packageJSON["type"] + "</td>" +
+                        "<td>" + status + "</td>" +
+                        "<td><a class='view-package custom-link'>Lihat</a></td>" +
+                        //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                        "</tr>"
+                    );
+                }
+                sentPackages = [];
+                $("#sent-packages").find("*").remove();
+                let fd = new FormData();
+                fd.append("start", sStart);
+                fd.append("total", PAGINATION_STEP);
+                $.ajax({
+                    type: 'POST',
+                    url: PHP_PATH+'get-sent-packages.php',
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function(response) {
+                        sentPackages = JSON.parse(response);
+                        for (var i=0; i<sentPackages.length; i++) {
+                            var packageJSON = sentPackages[i];
+                            var status = "";
+                            if (packageJSON["status"] == "received") {
+                                status = "Diterima";
+                            } else if (packageJSON["status"] == "sent") {
+                                status = "Dikirim";
+                            }
+                            $("#sent-packages").append("" +
+                                "<tr>" +
+                                "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (sStart+i+1) + "</div></td>" +
+                                "<td>" + packageJSON["id"] + "</td>" +
+                                "<td>" + packageJSON["sender_name"] + "</td>" +
+                                "<td>" + packageJSON["receiver_name"] + "</td>" +
+                                "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
+                                "<td>" + packageJSON["courier_name"] + "</td>" +
+                                "<td>" + packageJSON["date_received"] + "</td>" +
+                                "<td>" + packageJSON["type"] + "</td>" +
+                                "<td>" + status + "</td>" +
+                                "<td><a class='view-package custom-link'>Lihat</a></td>" +
+                                //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
+                                "</tr>"
+                            );
+                        }
+                        setPackageClickListener();
+                        hideProgress();
+                    }
+                });
+            }
+        });
+    });
+}
+
+function closeFilterByDateDialog() {
+    $("#date-picker-container").fadeOut(300);
 }

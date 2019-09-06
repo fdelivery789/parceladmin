@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fad0f770-8cad-4345-b3dd-fb30ca8c409c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/packages.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/packages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/packages.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/packages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get-received-packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get-received-packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/get-sent-packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/get-sent-packages.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +160,8 @@
       <workItem from="1567497528688" duration="339000" />
       <workItem from="1567537415392" duration="822000" />
       <workItem from="1567705040048" duration="887000" />
-      <workItem from="1567735853825" duration="2859000" />
+      <workItem from="1567735853825" duration="5175000" />
+      <workItem from="1567769680135" duration="1538000" />
     </task>
     <servers />
   </component>
