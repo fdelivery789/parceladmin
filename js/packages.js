@@ -21,14 +21,23 @@ function getPackages() {
             receivedPackages = JSON.parse(response);
             for (var i=0; i<receivedPackages.length; i++) {
                 var packageJSON = receivedPackages[i];
+                var status = "";
+                if (packageJSON["status"] == "received") {
+                    status = "Diterima";
+                } else if (packageJSON["status"] == "sent") {
+                    status = "Dikirim";
+                }
                 $("#received-packages").append("" +
                     "<tr>" +
                     "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (i+1) + "</div></td>" +
+                    "<td>" + packageJSON["id"] + "</td>" +
                     "<td>" + packageJSON["sender_name"] + "</td>" +
                     "<td>" + packageJSON["receiver_name"] + "</td>" +
+                    "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
                     "<td>" + packageJSON["courier_name"] + "</td>" +
                     "<td>" + packageJSON["date_received"] + "</td>" +
                     "<td>" + packageJSON["type"] + "</td>" +
+                    "<td>" + status + "</td>" +
                     "<td><a class='view-package custom-link'>Lihat</a></td>" +
                     //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
                     "</tr>"
@@ -43,14 +52,23 @@ function getPackages() {
                     sentPackages = JSON.parse(response);
                     for (var i=0; i<sentPackages.length; i++) {
                         var packageJSON = sentPackages[i];
+                        var status = "";
+                        if (packageJSON["status"] == "received") {
+                            status = "Diterima";
+                        } else if (packageJSON["status"] == "sent") {
+                            status = "Dikirim";
+                        }
                         $("#sent-packages").append("" +
                             "<tr>" +
                             "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (i+1) + "</div></td>" +
+                            "<td>" + packageJSON["id"] + "</td>" +
                             "<td>" + packageJSON["sender_name"] + "</td>" +
                             "<td>" + packageJSON["receiver_name"] + "</td>" +
+                            "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
                             "<td>" + packageJSON["courier_name"] + "</td>" +
                             "<td>" + packageJSON["date_received"] + "</td>" +
                             "<td>" + packageJSON["type"] + "</td>" +
+                            "<td>" + status + "</td>" +
                             "<td><a class='view-package custom-link'>Lihat</a></td>" +
                             //"<td><a class='delete-package custom-link'>Hapus</a></td>" +
                             "</tr>"
