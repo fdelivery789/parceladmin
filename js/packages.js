@@ -2,6 +2,8 @@ var receivedPackages = [];
 var sentPackages = [];
 var admins = [];
 var currentTab = 1;
+var rStart = 0;
+var sStart = 0;
 
 $(document).ready(function() {
     checkSession();
@@ -12,10 +14,14 @@ function getPackages() {
     receivedPackages = [];
     $("#received-packages").find("*").remove();
     showProgress("Memuat daftar paket");
+    let fd = new FormData();
+    fd.append("start", rStart);
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: PHP_PATH+'get-received-packages.php',
-        dataType: 'text',
+        data: fd,
+        processData: false,
+        contentType: false,
         cache: false,
         success: function(response) {
             receivedPackages = JSON.parse(response);
@@ -43,10 +49,14 @@ function getPackages() {
                     "</tr>"
                 );
             }
+            let fd = new FormData();
+            fd.append("start", sStart);
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: PHP_PATH+'get-sent-packages.php',
-                dataType: 'text',
+                data: fd,
+                processData: false,
+                contentType: false,
                 cache: false,
                 success: function(response) {
                     sentPackages = JSON.parse(response);

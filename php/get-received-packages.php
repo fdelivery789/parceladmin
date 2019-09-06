@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
-$results = $c->query("SELECT * FROM packages WHERE status='received'");
+$start = intval($_POST["start"]);
+$results = $c->query("SELECT * FROM packages WHERE status='received' LIMIT " . $start . ",5");
 $packages = [];
 if ($results && $results->num_rows > 0) {
 	while ($row = $results->fetch_assoc()) {

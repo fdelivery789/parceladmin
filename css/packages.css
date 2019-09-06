@@ -5,3 +5,17 @@
 #tab2 {
     transition: background-color .3s, color .3s;
 }
+
+#pagination-button {
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    background-image: linear-gradient(white, #cccccc);
+    color: #555555;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#pagination-button:hover {
+    background-image: linear-gradient(#cccccc, white);
+}
