@@ -6,7 +6,7 @@
     transition: background-color .3s, color .3s;
 }
 
-#pagination-button {
+.pagination-button {
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
     background-image: linear-gradient(white, #cccccc);
@@ -16,6 +16,6 @@
     cursor: pointer;
 }
 
-#pagination-button:hover {
+.pagination-button:hover {
     background-image: linear-gradient(#cccccc, white);
 }

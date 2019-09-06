@@ -85,8 +85,9 @@
                     <tbody id="received-packages">
                     </tbody>
                 </table>
-                <div style="width: 100%; display: flex; justify-content: flex-end; flex-flow: row wrap;">
-                    <button id="pagination-button">Berikutnya</button>
+                <div style="width: calc(100% - 20px); display: flex; justify-content: flex-end; flex-flow: row wrap; margin-right: 20px;">
+                    <button onclick="rPrev()" id="r-prev" class="pagination-button" style="display: none; ">Sebelumnya</button>
+                    <button onclick="rNext()" id="r-next" class="pagination-button" style="display: none; margin-left: 10px;">Berikutnya</button>
                 </div>
                 <div>&nbsp;</div>
             </div>
@@ -109,6 +110,10 @@
                     <tbody id="sent-packages">
                     </tbody>
                 </table>
+                <div style="width: calc(100% - 20px); display: flex; justify-content: flex-end; flex-flow: row wrap; margin-right: 20px;">
+                    <button onclick="sPrev()" id="s-prev" class="pagination-button" style="display: none; ">Sebelumnya</button>
+                    <button onclick="sNext()" id="s-next" class="pagination-button" style="display: none; margin-left: 10px;">Berikutnya</button>
+                </div>
                 <div>&nbsp;</div>
             </div>
         </div>
