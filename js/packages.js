@@ -172,7 +172,8 @@ function setPackageClickListener() {
         $("#courier-name").val(packageJSON["courier_name"]);
         $("#type").val(packageJSON["type"]);
         $("#total-items").val(packageJSON["total_items"]);
-        $("#date-received").val(packageJSON["date_received"]+" "+packageJSON["time_received"]);
+        $("#date-received").val(packageJSON["date_received"]);
+        $("#time-received").val(packageJSON["time_received"]);
         var status = packageJSON["status"];
         if (status == "received") {
             $("#status").val("Diterima");
