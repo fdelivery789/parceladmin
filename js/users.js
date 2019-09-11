@@ -365,7 +365,7 @@ function setUserClickListener() {
                 success: function (response) {
                     var doc = new jsPDF();
                     doc.setFontSize(14);
-                    doc.text(32, 25, "Berikut ini riwayat pemesanan oleh pengguna bernama " + user["name"]);
+                    doc.text("Berikut ini riwayat pemesanan oleh pengguna bernama " + user["name"], 32, 25);
                     nextY = 40;
                     ordersJSON = JSON.parse(response);
                     orderLooper = 0;
@@ -385,7 +385,7 @@ function setUserClickListener() {
                 success: function (response) {
                     var doc = new jsPDF();
                     doc.setFontSize(14);
-                    doc.text(32, 25, "Berikut ini riwayat pembelian dari penjual bernama " + user["name"]);
+                    doc.text("Berikut ini riwayat pembelian dari penjual bernama " + user["name"], 32, 25);
                     nextY = 40;
                     ordersJSON = JSON.parse(response);
                     orderLooper = 0;
@@ -405,7 +405,7 @@ function setUserClickListener() {
                 success: function (response) {
                     var doc = new jsPDF();
                     doc.setFontSize(14);
-                    doc.text(32, 25, "Berikut ini riwayat pengantaran dari pengirim bernama " + user["name"]);
+                    doc.text("Berikut ini riwayat pengantaran dari pengirim bernama " + user["name"], 32, 25);
                     nextY = 40;
                     ordersJSON = JSON.parse(response);
                     orderLooper = 0;
@@ -427,7 +427,7 @@ function writeHistory(doc, user) {
     firebase.database().ref("users/"+orderJSON["buyer_id"]+"/name").once("value").then(function(snapshot) {
         var buyerName = snapshot.val();
         doc.setFontSize(18);
-        doc.text(32, nextY, "=============== ORDER "+orderJSON["id"]+" ===============");
+        doc.text("=============== ORDER "+orderJSON["id"]+" ===============", 32, nextY);
         nextY += 8;
         if (nextY > 247) {
             nextY -= 237;
@@ -435,14 +435,14 @@ function writeHistory(doc, user) {
         }
         doc.setFontType("bold");
         doc.setFontSize(14);
-        doc.text(32, nextY, "Nama pembeli:");
+        doc.text("Nama pembeli:", 32, nextY);
         nextY += 7;
         if (nextY > 247) {
             nextY -= 237;
             doc.addPage();
         }
         doc.setFontType("normal");
-        doc.text(32, nextY, buyerName);
+        doc.text(buyerName, 32, nextY);
         nextY += 7;
         if (nextY > 247) {
             nextY -= 237;
@@ -451,14 +451,14 @@ function writeHistory(doc, user) {
         firebase.database().ref("users/"+orderJSON["seller_id"]+"/name").once("value").then(function(snapshot) {
             var sellerName = snapshot.val();
             doc.setFontType("bold");
-            doc.text(32, nextY, "Nama penjual:");
+            doc.text("Nama penjual:", 32, nextY);
             nextY += 7;
             if (nextY > 247) {
                 nextY -= 237;
                 doc.addPage();
             }
             doc.setFontType("normal");
-            doc.text(32, nextY, sellerName);
+            doc.text(sellerName, 32, nextY);
             nextY += 7;
             if (nextY > 247) {
                 nextY -= 237;
@@ -467,28 +467,28 @@ function writeHistory(doc, user) {
             firebase.database().ref("users/"+orderJSON["driver_id"]+"/name").once("value").then(function(snapshot) {
                 var driverName = snapshot.val();
                 doc.setFontType("bold");
-                doc.text(32, nextY, "Nama pengirim:");
+                doc.text("Nama pengirim:", 32, nextY);
                 nextY += 7;
                 if (nextY > 247) {
                     nextY -= 237;
                     doc.addPage();
                 }
                 doc.setFontType("normal");
-                doc.text(32, nextY, driverName);
+                doc.text(driverName, 32, nextY);
                 nextY += 7;
                 if (nextY > 247) {
                     nextY -= 237;
                     doc.addPage();
                 }
                 doc.setFontType("bold");
-                doc.text(32, nextY, "Biaya:");
+                doc.text("Biaya:", 32, nextY);
                 nextY += 7;
                 if (nextY > 247) {
                     nextY -= 237;
                     doc.addPage();
                 }
                 doc.setFontType("normal");
-                doc.text(32, nextY, "Rp"+""+orderJSON["fee"]+",-");
+                doc.text("Rp"+""+orderJSON["fee"]+",-", 32, nextY);
                 nextY += 7;
                 if (nextY > 247) {
                     nextY -= 237;
@@ -497,49 +497,49 @@ function writeHistory(doc, user) {
                 firebase.database().ref("restaurants/"+orderJSON["restaurant_id"]+"/name").once("value").then(function(snapshot) {
                     var restaurantName = snapshot.val();
                     doc.setFontType("bold");
-                    doc.text(32, nextY, "Nama restoran:");
+                    doc.text("Nama restoran:", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("normal");
-                    doc.text(32, nextY, restaurantName);
+                    doc.text(restaurantName, 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("bold");
-                    doc.text(32, nextY, "Total item:");
+                    doc.text("Total item:", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("normal");
-                    doc.text(32, nextY, orderJSON["total_items"]+" item");
+                    doc.text(orderJSON["total_items"]+" item", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("bold");
-                    doc.text(32, nextY, "Total harga:");
+                    doc.text("Total harga:", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("normal");
-                    doc.text(32, nextY, "Rp"+""+orderJSON["total_price"]+",-");
+                    doc.text("Rp"+""+orderJSON["total_price"]+",-", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
                         doc.addPage();
                     }
                     doc.setFontType("bold");
-                    doc.text(32, nextY, "Daftar makanan:");
+                    doc.text("Daftar makanan:", 32, nextY);
                     nextY += 7;
                     if (nextY > 247) {
                         nextY -= 237;
@@ -574,7 +574,7 @@ function base64ImageCallback(user, doc, dataURL) {
         x = 132;
     }
     doc.addImage(dataURL, 'JPEG', x, nextY + 7, 70, 70);
-    doc.text(x, nextY + 84, "Harga: Rp" + foodJSON["price"] + ",-");
+    doc.text("Harga: Rp" + foodJSON["price"] + ",-", x, nextY + 84);
     if ((foodsJSON.length%2) == 0) {
         if ((foodLooper%2) == 0) {
             nextY += 94;
@@ -598,7 +598,7 @@ function drawFood(doc, user) {
     foodLooper--;
     if (foodJSON != null) {
         doc.setFontType("normal");
-        doc.text(x, nextY, foodJSON["name"]);
+        doc.text(foodJSON["name"], x, nextY);
         getBase64Image(foodJSON["img_url"].replace("http://", "https://"), user, doc, base64ImageCallback);
     }
 }

@@ -360,7 +360,7 @@ function writeHistory(name, packagesJSON, doc) {
     var packageJSON = packagesJSON[looper];
     looper++;
     doc.setFontSize(18);
-    doc.text(32, nextY, "=============== PAKET "+packageJSON["id"]+" ===============");
+    doc.text("=============== PAKET "+packageJSON["id"]+" ===============", 32, nextY);
     nextY += 8;
     if (nextY > 247) {
         nextY -= 237;
@@ -370,14 +370,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Nama pengirim
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Nama pengirim:");
+    doc.text("Nama pengirim:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["sender_name"]);
+    doc.text(packageJSON["sender_name"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -387,14 +387,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Nama penerima
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Nama penerima:");
+    doc.text("Nama penerima:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["receiver_name"]);
+    doc.text(packageJSON["receiver_name"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -404,14 +404,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Nama satpam penerima
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Nama admin penerima:");
+    doc.text("Nama admin penerima:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["admin_receiver_name"]);
+    doc.text(packageJSON["admin_receiver_name"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -421,14 +421,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Nama kurir
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Nama kurir:");
+    doc.text("Nama kurir:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["courier_name"]);
+    doc.text(packageJSON["courier_name"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -438,14 +438,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Total item
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Total item:");
+    doc.text("Total item:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["total_items"]);
+    doc.text(packageJSON["total_items"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -455,14 +455,14 @@ function writeHistory(name, packagesJSON, doc) {
     // Tanggal diterima
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Tanggal diterima:");
+    doc.text("Tanggal diterima:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, packageJSON["date_received"]+" "+packageJSON["time_received"]);
+    doc.text(packageJSON["date_received"]+" "+packageJSON["time_received"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
@@ -473,14 +473,14 @@ function writeHistory(name, packagesJSON, doc) {
     if (packageJSON["date_sent"] != null && packageJSON["date_sent"] != "null") {
         doc.setFontType("bold");
         doc.setFontSize(14);
-        doc.text(32, nextY, "Tanggal dikirim:");
+        doc.text("Tanggal dikirim:", 32, nextY);
         nextY += 7;
         if (nextY > 247) {
             nextY -= 237;
             doc.addPage();
         }
         doc.setFontType("normal");
-        doc.text(32, nextY, packageJSON["date_sent"] + " " + packageJSON["time_sent"]);
+        doc.text(packageJSON["date_sent"] + " " + packageJSON["time_sent"], 32, nextY);
         nextY += 7;
         if (nextY > 247) {
             nextY -= 237;
@@ -496,14 +496,14 @@ function writeHistory(name, packagesJSON, doc) {
     }
     doc.setFontType("bold");
     doc.setFontSize(14);
-    doc.text(32, nextY, "Nama pengirim:");
+    doc.text("Nama pengirim:", 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
         doc.addPage();
     }
     doc.setFontType("normal");
-    doc.text(32, nextY, status);
+    doc.text(status, 32, nextY);
     nextY += 7;
     if (nextY > 247) {
         nextY -= 237;
