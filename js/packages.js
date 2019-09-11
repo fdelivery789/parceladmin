@@ -11,6 +11,9 @@ var nextY = 40;
 var looper = 0;
 
 $(document).ready(function() {
+    var doc = new jsPDF()
+    doc.text('Hello world!', 10, 10)
+    doc.save('a4.pdf')
     checkSession();
     getPackages();
 });
