@@ -114,7 +114,7 @@ function getPackages() {
                                         $("#sent-packages").append("" +
                                             "<tr>" +
                                             "<td><div style='background-color: #2f2e4d; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;'>" + (sStart+i+1) + "</div></td>" +
-                                            "<td>" + packageJSON["id"] + "</td>" +
+                                            "<td>#" + packageJSON["ref_no"] + "</td>" +
                                             "<td>" + packageJSON["sender_name"] + "</td>" +
                                             "<td>" + packageJSON["receiver_name"] + "</td>" +
                                             "<td>" + packageJSON["admin_receiver_name"] + "</td>" +
