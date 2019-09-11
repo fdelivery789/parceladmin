@@ -411,7 +411,6 @@ function writeHistory(name, packagesJSON, doc) {
         doc.addPage();
     }
     doc.setFontType("normal");
-    alert(typeof packageJSON["admin_receiver_name"]);
     doc.text(packageJSON["admin_receiver_name"], 32, nextY);
     nextY += 7;
     if (nextY > 247) {
